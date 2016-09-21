@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+       
+	   $.ajax({ 
+			url: 'http://localhost',
+			type: "POST",
+			data: {
+				yourScore: $('input[name="yourScore"]').val()
+			}, 			
+			dataType: "json", 
+			cache: false, 
+			timeout: 5000, 
+			success: function(data) { 
+				$("#test").append(data); 
+			}, 
+			error: function(jqXHR, textStatus, errorThrown) { 
+				alert('Error connecting to the Node.js server... ' + textStatus + " " + errorThrown); 
+			} 
+		});
+	   
+	   
+    });
+});
+</script>
+</head>
+<body>
+
+<input type="text" name='yourScore'>
+
+<button type="button">ok</button>
+
+</body>
+</html>
+
+
+
