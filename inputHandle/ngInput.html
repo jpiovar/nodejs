@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+       /*
+	   $.ajax({ 
+			url: 'http://localhost',
+			type: "POST",
+			data: {
+				score:"janko"
+			}, 			
+			dataType: "jsonp", 
+			cache: false, 
+			timeout: 5000, 
+			success: function(data) { 
+				alert(data); 
+			}, 
+			error: function(jqXHR, textStatus, errorThrown) { 
+				alert('Error connecting to the Node.js server... ' + textStatus + " " + errorThrown); 
+			} 
+		});
+	   */
+	   
+	   $.get('http://localhost',
+        { score:"janko" },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+	   
+    });
+});
+</script>
 <body>
 
 <div ng-app="">
@@ -8,6 +40,12 @@
 <p>Input something in the input box:</p>
 <p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
 <h1>Hello {{name}}</h1>
+
+
+<input type="text" name='Score'>
+
+<button type="button">ok</button>
+
 
 </div>
 
